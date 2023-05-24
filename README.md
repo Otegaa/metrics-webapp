@@ -48,7 +48,7 @@
 - **[Display a list of Cryptocurrency coins]**
 - **[A search input to make searching for coins easier]**
 - **[A green or red icon to show if coin is trading higher or not]**
-  **[State is managed with Redux]**
+- **[State is managed with Redux]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
