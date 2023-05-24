@@ -70,7 +70,7 @@ const Home = () => {
                 className={styles.btn}
               >
                 <h3>{symbol}</h3>
-                <p>
+                <div>
                   {hour < 0 ? (
                     <span className={styles.span}>
                       <FaChevronDown color="red" />
@@ -82,7 +82,7 @@ const Home = () => {
                       {Math.abs(hour)}
                     </span>
                   )}
-                </p>
+                </div>
               </button>
             );
           })}
