@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { BsSearch } from 'react-icons/bs';
 import { fetchCoins } from '../redux/home/homeSlice';
 import styles from '../CSS/Home.module.css';
 
@@ -18,6 +19,10 @@ const Home = () => {
     navigate(`/details/${coins.name}`, { state: { coins } });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     if (isLoading === false) dispatch(fetchCoins());
   }, [isLoading, dispatch]);
@@ -28,15 +33,25 @@ const Home = () => {
 
   return (
     <div className={styles.homeContainer}>
-      <h1>Digital Coin Explorer</h1>
-      <form>
-        <input
-          type="text"
-          placeholder="search coins"
-          onChange={(e) => setSearch(e.target.value)}
-          ref={inputRef}
-        />
-      </form>
+      <div className={styles.headingContainer}>
+        <h1 className={styles.heading}>Digital Coin Explorer</h1>
+        <form>
+          <input
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            ref={inputRef}
+          />
+          <button
+            type="submit"
+            className={styles.searchIcon}
+            onClick={handleSubmit}
+          >
+            <BsSearch />
+          </button>
+        </form>
+      </div>
       <div className={styles.coinContainer}>
         {coins
           .filter((coin) => {
