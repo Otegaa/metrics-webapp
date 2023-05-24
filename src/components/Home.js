@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { fetchCoins } from '../redux/home/homeSlice';
+import styles from '../CSS/Home.module.css';
 
 const Home = () => {
   const [search, setSearch] = useState('');
@@ -12,6 +12,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const inputRef = useRef(null);
 
   const details = (coins) => {
     navigate(`/details/${coins.name}`, { state: { coins } });
@@ -21,23 +22,22 @@ const Home = () => {
     if (isLoading === false) dispatch(fetchCoins());
   }, [isLoading, dispatch]);
 
-  if (isLoading) {
-    <div>
-      <h1>Loading...</h1>
-    </div>;
-  }
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   return (
-    <>
+    <div className={styles.homeContainer}>
       <h1>Digital Coin Explorer</h1>
       <form>
         <input
           type="text"
           placeholder="search coins"
           onChange={(e) => setSearch(e.target.value)}
+          ref={inputRef}
         />
       </form>
-      <div>
+      <div className={styles.coinContainer}>
         {coins
           .filter((coin) => {
             const { symbol } = coin;
@@ -47,28 +47,32 @@ const Home = () => {
           })
           .map((coin) => {
             const { id, symbol, percent_change_1h: hour } = coin;
-            // console.log(coin);
             return (
-              <button type="button" key={id} onClick={() => details(coin)}>
+              <button
+                type="button"
+                key={id}
+                onClick={() => details(coin)}
+                className={styles.btn}
+              >
                 <h3>{symbol}</h3>
                 <p>
-                  {hour <= 0 ? (
-                    <>
+                  {hour < 0 ? (
+                    <span className={styles.span}>
                       <FaChevronDown color="red" />
                       {Math.abs(hour)}
-                    </>
+                    </span>
                   ) : (
-                    <>
+                    <span className={styles.span}>
                       <FaChevronUp color="green" />
                       {Math.abs(hour)}
-                    </>
+                    </span>
                   )}
                 </p>
               </button>
             );
           })}
       </div>
-    </>
+    </div>
   );
 };
 export default Home;
