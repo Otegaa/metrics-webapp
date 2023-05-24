@@ -73,8 +73,6 @@ To get a local copy up and running, follow these steps.
 ### Setup
 
 Clone this repository to your desired folder:
-https://github.com/Otegaa/metrics-webapp.git
-Example commands:
 
 ```sh
   git clone https://github.com/Otegaa/metrics-webapp.git
