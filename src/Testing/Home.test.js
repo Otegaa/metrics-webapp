@@ -24,7 +24,7 @@ describe('Home Component', () => {
         <MemoryRouter>
           <Home />
         </MemoryRouter>
-      </Provider>
+      </Provider>,
     );
 
     expect(screen.getByText('Digital Coin Explorer')).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('Home Component', () => {
         <MemoryRouter>
           <Home />
         </MemoryRouter>
-      </Provider>
+      </Provider>,
     );
 
     expect(screen.getByText('BTC')).toBeInTheDocument();

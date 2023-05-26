@@ -11,7 +11,7 @@ const DetailsPage = () => {
     navigate('/');
   };
 
-  const { coins } = location.state;
+  const { coins } = location.state || { coins: {} };
 
   return (
     <div>
