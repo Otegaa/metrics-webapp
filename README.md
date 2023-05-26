@@ -48,13 +48,13 @@
 - **[Display a list of Cryptocurrency coins]**
 - **[A search input to make searching for coins easier]**
 - **[A green or red icon to show if coin is trading higher or not]**
-  **[State is managed with Redux]**
+- **[State is managed with Redux]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[N/A]
+[Live Demo](metrics-website.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,8 +73,6 @@ To get a local copy up and running, follow these steps.
 ### Setup
 
 Clone this repository to your desired folder:
-https://github.com/Otegaa/metrics-webapp.git
-Example commands:
 
 ```sh
   git clone https://github.com/Otegaa/metrics-webapp.git
