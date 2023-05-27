@@ -58,7 +58,7 @@ const Home = () => {
             const { symbol } = coin;
             return search.toLowerCase() === ''
               ? coin
-              : symbol.toLowerCase().includes(search);
+              : symbol.toLowerCase().includes(search.toLowerCase());
           })
           .map((coin) => {
             const { id, symbol, percent_change_1h: hour } = coin;
